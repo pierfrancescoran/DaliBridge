@@ -1,0 +1,1 @@
+agent('work/robot2','robot2','no',italian,['conf/communication'],['/home/peter/Desktop/DALI-master/src/communication_fipa','/home/peter/Desktop/DALI-master/src/learning','/home/peter/Desktop/DALI-master/src/planasp'],'no','/home/peter/Desktop/DALI-master/src/onto/dali_onto.txt',[]).
