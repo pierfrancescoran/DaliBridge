@@ -1,6 +1,0 @@
-/* Specifies the possible cells of the world and their meanings in term of objects. */
-
-worldObject('A', agent).
-worldObject('R', resource).
-worldObject('.', blank).
-

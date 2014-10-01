@@ -1,1 +1,0 @@
-agent('temp/_agent_test',test,'no',italian,['temp/test_comm'],['/home/peter/Desktop/DALI-master/src/communication_fipa', '/home/peter/Desktop/DALI-master/src/learning', '/home/peter/Desktop/DALI-master/src/planasp'],'no','/home/peter/Desktop/DALI-master/src/onto/dali_onto.txt',[]).
