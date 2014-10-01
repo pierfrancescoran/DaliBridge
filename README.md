@@ -10,6 +10,9 @@ The DALIbridge establish a connection between two different and stand-alone comp
 1. the Multi Agent System with two agents that move around a flat environment;
 2. the Gazebo robot simulator that receive instruction from the Multi Agent System, and translate them in a virtual representation. 
 
+
+
+
 DEPENDANCIES 
 
 This project run using different modules and technologies: 
@@ -17,6 +20,9 @@ This project run using different modules and technologies:
 DALI-master, PyDALI-master, and PySicstus-master, at https://github.com/AAAI-DISIM-UnivAQ 
 
 Gazebo 4.0, at http://gazebosim.org/ 
+
+
+
 
 EXECUTION INSTRUCTION
 
