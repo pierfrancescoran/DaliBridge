@@ -13,17 +13,18 @@ The DALIbridge establish a connection between two different and stand-alone comp
 ![example](https://github.com/pierfrancescoran/DaliBridge/blob/master/simulation.png)
 
 
-##DEPENDENCIES 
+###DEPENDENCIES 
 
 This project run using different modules and technologies: 
 
 DALI, PyDALI, and PySicstus, at https://github.com/AAAI-DISIM-UnivAQ 
+(the last two modules have been modified for the purpose of the project)
 
 Gazebo 4.0, at http://gazebosim.org/ 
 
 
 
-##EXECUTION INSTRUCTION
+###EXECUTION INSTRUCTION
 
 To make the project run it is necessary to correct some file: 
 
