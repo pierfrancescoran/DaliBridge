@@ -10,7 +10,7 @@ The DALIbridge establish a connection between two different and stand-alone comp
 1. the Multi Agent System with two agents that move around randomly in a flat environment;
 2. the Gazebo robot simulator that receive instruction from the Multi Agent System, and translate them in a virtual representation. 
 
-!(https://github.com/pierfrancescoran/DaliBridge/blob/master/simulation.png)
+!(/DaliBridge/blob/master/simulation.png)
 
 
 ##DEPENDENCIES 
@@ -45,5 +45,5 @@ To make the project run it is necessary to correct some file:
 	
 	2.     $ ./start.sh 
 	
-	   or     $ ./startNT.sh
+	       $ ./startNT.sh
 5. to stop and close the execution push the button start from terminal (wait at least till the Gazebo is launched). 
