@@ -1,0 +1,82 @@
+/**** Utils ****/
+
+:- dynamic identity/1. /* name of the agent, used to identfy it in the message exchange */
+retrieveIdentity :> agente(N,Tee,S,F), assert(identity(N)).
+
+/* Evaluates the server name I, used by the message utility. */
+:-dynamic server/1.
+getServer(I) :> server(I) ; open('server.txt',read,Stream,[]), read(Stream,I), close(Stream), assert(server(I)).
+
+/* Send message by writing to the server. */
+message(To, Message, From) :> getServer(I), out(message(I,To,I,From,italian,[],Message)).
+
+/* Short version: send_message from this agent (whose identity is specified via identity/1), sent as received(From, MessageName) */
+send(To, MessageName) :> identity(From), message(To, send_message(received(From, MessageName), From), From).
+
+/* Allows sending of MessageName + arguments in ArgsList, sent as received(From, MessageName, ArgsList). */
+/*
+send(To, MessageName, ArgsList) :> 
+	identity(From), message(To, send_message(received(From, MessageName, ArgsList), From), From).*/
+
+/* Allows sending of MessageName + arguments in ArgsList, sent as received(From, MessageName, Arg1, Arg2, ... , ArgN).
+   Note: not strictly needed since you can send directly a list, even if its possible length its limited. */
+send(To, MessageName, ArgsList) :> 
+	length(ArgsList, ArgsLength), ReceivedLength is ArgsLength + 2, /* +2 for Predicate and From */
+	functor(Received, received, ReceivedLength), /* create received predicate with ReceivedLength arity (unbounded) */
+	identity(From), arg(1, Received, From), /* bind received(From, ...) */
+	arg(2, Received, MessageName), /* bind received(_, Predicate, ...) */
+	bindListToFunctor(Received, ArgsList, 3), /* bind args */
+	message(To, send_message(Received, From), From).
+
+/* Given a functor with unbinded arguments, bind them with the elements of the List starting from argument at position StartPos.
+   (used by the send to implement variable number of message arguments). */
+bindListToFunctor(Functor, [], StartPos).
+bindListToFunctor(Functor, [Element|List], StartPos) :-
+	arg(StartPos, Functor, Element),
+	NextStartPos is StartPos+1,
+	bindListToFunctor(Functor, List, NextStartPos).
+
+	
+
+/* Evaluates in Lines the list of lines that are in Filename (which has each line with the format 'text'.) */
+getFileLines(Filename, Lines) :- open(Filename,read,Stream), read_file(Stream,Lines), close(Stream).
+read_file(Stream,[]) :-
+    at_end_of_stream(Stream).
+read_file(Stream,[X|L]) :-
+    \+ at_end_of_stream(Stream),
+    read(Stream,X),
+    read_file(Stream,L).
+
+
+/* Call eachHandler(Handler, Line, Index) for each Line in Lines, until the EOF line (excluded). Index starts at 0. */
+eachFileLine(Lines, Handler) :- eachFileLine(Lines, Handler, 0).
+eachFileLine([Line|Lines], Handler, Index) :- 
+	Line = 'end_of_file'.
+eachFileLine([Line|Lines], Handler, Index) :- 
+	\+ Line == 'end_of_file',
+	eachHandler(Handler, Line, Index),
+	NextIndex is Index+1,
+	eachFileLine(Lines, Handler, NextIndex).
+
+/* Generic foreach for lists: call eachHandler(Handler, Element, Index) for each Element in List. Index starts at 0. */
+each(List, Handler) :- each(List, Handler, 0).
+each([], Handler, Index).
+each([Element|List], Handler, Index) :-
+	eachHandler(Handler, Element, Index),
+	NextIndex is Index+1,
+	each(List, Handler, NextIndex).	
+
+/* Return in F first element of list */	
+first([F|_], F).
+
+/* Call forRangeHandler(Handler, Index) for each number in [Start, End-1]. */
+forRange(Start, End, Handler) :-
+	Start = End.
+forRange(Start, End, Handler) :-
+	Start < End,
+	forRangeHandler(Handler, Start),
+	NextStart is Start+1,
+	forRange(NextStart, End, Handler).
+
+
+	

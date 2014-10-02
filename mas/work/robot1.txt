@@ -1,0 +1,20 @@
+:- dynamic started/1.
+starting(this) :- not(started(this)).
+startingI(X) :> main, assert(started(this)).
+
+main :> use_module(library(between)),
+	use_module('utils.txt'),
+	use_module(library(system)),
+	use_module(library(random)),
+	retrieveIdentity,	
+	nl, write('Started'), nl,
+	assert( asseX(X) ), assert(asseY(Y)),
+	random(1, 10, X), random(1, 10, Y),
+	nl, write('Start moving'),
+	move.
+
+move :> asseX(X),asseY(Y),
+	nl, write('moving from: '),write(X),write(" "),write(Y),
+	send(tcpCon, 'move', [X, Y, random(1, 10, X), random(1, 10, Y)]),
+	sleep(1),
+	move.
