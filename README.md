@@ -10,7 +10,7 @@ The DALIbridge establish a connection between two different and stand-alone comp
 1. the Multi Agent System with two agents that move around randomly in a flat environment;
 2. the Gazebo robot simulator that receive instruction from the Multi Agent System, and translate them in a virtual representation. 
 
-!(/simulation.png)
+!(simulation.png)
 
 
 ##DEPENDENCIES 
