@@ -1,7 +1,7 @@
 #DALI Bridge 
 
 
-The project is made for the course of Intelligent Agent at the University of l'Aquila. The vision is a virtual representation and simulation in Gazebo of a Multi Agent System developed in DALI. The  agents are implemented in a stand-alone program where they carry out their actions, and the Gazebo robot simulator show their behavior. 
+This project is made for the course of Intelligent Agent at the University of l'Aquila. The vision is a virtual representation and simulation in Gazebo of a Multi Agent System developed in DALI. The  agents are implemented in a stand-alone program where they carry out their actions, and the Gazebo robot simulator show their behavior. 
 
 
 
