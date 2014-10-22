@@ -89,5 +89,4 @@ To make the project run it is necessary to correct some file:
 	
 	2.     $ ./start.sh 
 	
-	       $ ./startNT.sh
 7. to stop and close the execution push the button start from terminal (wait at least till the Gazebo is launched). 
