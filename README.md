@@ -32,18 +32,18 @@ To make the project run it is necessary to correct some file:
 
 2. the paths in the tcpCon.py file at lines 7 and 11 in the DaliBridge folder; 
 
-3. insert in the pysicstus init file the following methods in the class Agent:
+3. insert in the pysicstus init file the following methods in the class PrologSystem:
 
-	def readAll(self):
-	    try:
-	       self.PrologInt.readline()
-	       self.PrologInt.readline()
-	       self.PrologInt.readline()
-	       self.PrologInt.readline()
-	       i = self.PrologInt.readline()
-	       return i
-	    except Exception:
-	       return "TIMEOUT"
+		def readAll(self):
+		    try:
+		       self.PrologInt.readline()
+		       self.PrologInt.readline()
+		       self.PrologInt.readline()
+		       self.PrologInt.readline()
+		       i = self.PrologInt.readline()
+		       return i
+		    except Exception:
+		       return "TIMEOUT"
 
 4. insert in the pydali init file the following methods in the class Agent:
 	  
