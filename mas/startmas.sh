@@ -1,6 +1,6 @@
 clear 
 sicstus_home=/usr/local/sicstus4.2.3
-dali_home=/home/peter/Desktop/DALI-master/src
+dali_home=../DALI-master/src
 prolog="$sicstus_home/bin/sicstus"
 WAIT="ping -c 4 127.0.0.1" 
 main_home=mas
