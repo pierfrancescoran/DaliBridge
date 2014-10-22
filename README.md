@@ -34,46 +34,45 @@ To make the project run it is necessary to correct some file:
 
 3. insert in the pysicstus init file the following methods in the class Agent:
 
-''' def readAll(self):
-        try:
-           self.PrologInt.readline()
-           self.PrologInt.readline()
-           self.PrologInt.readline()
-           self.PrologInt.readline()
-           i = self.PrologInt.readline()
-           return i 
-        except Exception:
-            return "TIMEOUT"
-       '''
+	def readAll(self):
+	    try:
+	       self.PrologInt.readline()
+	       self.PrologInt.readline()
+	       self.PrologInt.readline()
+	       self.PrologInt.readline()
+	       i = self.PrologInt.readline()
+	       return i
+	    except Exception:
+	       return "TIMEOUT"
 
 4. insert in the pydali init file the following methods in the class Agent:
 	  
 
-    '''def pul(self, goal=None):
-     	write2file(self.path+"/"+self.name+'.txt',self.makeConf())
-        self.Prolog.spawn()
-	self.Prolog.consultFile(ACTIVE_DALI, self.agentGoal, debug=True, blocking=True)
-
-
-    def readMove(self):
-        a = self.Prolog.readAll()
-        b = string.replace(a, "(", " ")
-        c = string.replace(b, ")", " ")
-        d = string.replace(c, "[", " ")
-        e = string.replace(d, "]", " ")
-        f = string.replace(e, ",", " ")
-        s = string.split(f)
-        print s 
-
-
-    def readMsg(self):
-        a = self.Prolog.readAll()
-        b = string.replace(a, "(", " ")
-        c = string.replace(b, ")", " ")
-        d = string.replace(c, ",", " ")
-        e = string.replace(d, "_", " ")
-        s = string.split(e)
-        return s '''
+	    def pul(self, goal=None):
+	     	write2file(self.path+"/"+self.name+'.txt',self.makeConf())
+	        self.Prolog.spawn()
+		self.Prolog.consultFile(ACTIVE_DALI, self.agentGoal, debug=True, blocking=True)
+	
+	
+	    def readMove(self):
+	        a = self.Prolog.readAll()
+	        b = string.replace(a, "(", " ")
+	        c = string.replace(b, ")", " ")
+	        d = string.replace(c, "[", " ")
+	        e = string.replace(d, "]", " ")
+	        f = string.replace(e, ",", " ")
+	        s = string.split(f)
+	        print s 
+	
+	
+	    def readMsg(self):
+	        a = self.Prolog.readAll()
+	        b = string.replace(a, "(", " ")
+	        c = string.replace(b, ")", " ")
+	        d = string.replace(c, ",", " ")
+	        e = string.replace(d, "_", " ")
+	        s = string.split(e)
+	        return s 
 
 
 5. build the Gazebo plugin: 
